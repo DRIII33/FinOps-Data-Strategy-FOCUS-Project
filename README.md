@@ -83,11 +83,11 @@ This project follows a strict three-phase rollout process.
 
 The core intellectual property of this project is the **`FINOPS_FOCUS_ANALYTICS`** view. It addresses the $38\%$ unallocated cost problem by implementing the following BigQuery logic (simplified):
 
-SELECT 
+*SELECT 
   COALESCE(tag_product, 'UNKNOWN') AS allocated_product,
   ...
 FROM raw_cloud_billing
-LEFT JOIN business_dau_metrics
+LEFT JOIN business_dau_metrics*
 
 
 This SQL transformation ensures that while the **raw data is messy**, the **reporting layer is clean and complete**, guaranteeing $100\%$ of costs can be attributed to a dimension (`Aether`, `Nexus`, or the designated problem category: `UNKNOWN`).
