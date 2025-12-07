@@ -1,0 +1,95 @@
+--- Cloud_Setup_Guide.docx ---
+
+## IBM Cloudability FinOps Data Strategy Project: Cloud Setup Guide
+
+**Project ID:** driiiportfolio
+**Dataset:** finops_data
+
+### A. Data Generation (Pre-requisite)
+
+1.  **Execute Python:** Run the Python code in the `01_Synthetic_Data_Generator.ipynb` Colab notebook.
+2.  **Download Data:** Download the two resulting CSV files:
+    * `raw_multi_cloud_billing_data.csv`
+    * `business_dau_metrics.csv`
+
+### B. BigQuery Environment Setup (Execute 02_BigQuery_Schema_SQL.sql)
+
+1.  **Run Schema Creation:** Open Google BigQuery within the `driiiportfolio` project.
+2.  **Execute Script:** Paste and execute the full content of the `02_BigQuery_Schema_SQL.sql` file. This script will:
+    * Create the `finops_data` dataset.
+    * Create the schemas for the two raw tables (`raw_cloud_billing` and `business_dau_metrics`).
+    * Create the core analytic view: `FINOPS_FOCUS_ANALYTICS`.
+
+### C. Data Ingestion (CSV Upload)
+
+1.  **Load Raw Billing Data:**
+    * Navigate to the `finops_data` dataset.
+    * Click "Create Table" and select the `raw_cloud_billing` table.
+    * **Source:** Upload the local file `raw_multi_cloud_billing_data.csv`.
+    * **File Format:** CSV.
+    * **Schema:** Auto-detect schema (or manually verify it matches the schema defined in the SQL file).
+    * **Advanced Options:** Ensure "Header rows to skip" is set to 1.
+    * Click "Create Table."
+2.  **Load Business Metrics Data:**
+    * Repeat the process for the `business_dau_metrics` table.
+    * **Source:** Upload the local file `business_dau_metrics.csv`.
+    * Click "Create Table."
+
+### D. Final Validation
+
+1.  Query the Analytic View: Run a simple `SELECT * FROM driiiportfolio.finops_data.FINOPS_FOCUS_ANALYTICS LIMIT 10;` to ensure data has been loaded and the view is operational.
+
+---
+
+## Phase 2: Data Generation and Cloud Setup (Google Colab, BigQuery)
+
+This phase moves from documentation to execution, performing the hands-on data engineering and architecture work.
+
+### 📝 Instructions for Phase 2
+
+1.  **Data Generation (Colab):**
+    * **Tool:** Google Colab / `01_Synthetic_Data_Generator.ipynb`
+    * **Action:** Execute all cells in the `01_Synthetic_Data_Generator.ipynb` notebook to generate the two required CSV files (`raw_multi_cloud_billing_data.csv` and `business_dau_metrics.csv`). Verify the script output confirms the initial low allocation rate ($\approx 62\%$).
+2.  **Cloud Schema Setup (BigQuery SQL):**
+    * **Tool:** Google BigQuery / `02_BigQuery_Schema_SQL.sql`
+    * **Action:** Follow Section B of the `Cloud_Setup_Guide.docx`. Execute the contents of `02_BigQuery_Schema_SQL.sql` in BigQuery to create the dataset and table schemas.
+3.  **Data Ingestion:**
+    * **Tool:** Google BigQuery Web Console / CSV Upload
+    * **Action:** Follow Section C of the `Cloud_Setup_Guide.docx`. Upload the two generated CSV files into their respective BigQuery tables: `raw_cloud_billing` and `business_dau_metrics`.
+4.  **Data Architecture Validation (The Senior Data Strategist Deliverable):**
+    * **Tool:** BigQuery
+    * **Action:** Run a test query against the `FINOPS_FOCUS_ANALYTICS` view to confirm that the `COALESCE` functions successfully replaced `NULL` tags with 'UNKNOWN', thereby fixing the data quality issue at the reporting layer and achieving the required data normalization.
+
+---
+
+## Phase 3: Executive Reporting and Insight Generation (SQL, Looker Studio)
+
+The final phase focuses on aggregating the high-quality data into the metrics required for the FinOps Executive Dashboard.
+
+### 📝 Instructions for Phase 3
+
+1.  **Execute Dashboard Queries (SQL):**
+    * **Tool:** Google BigQuery / `03_Dashboard_Queries_SQL.sql`
+    * **Action:** Execute the four distinct queries within `03_Dashboard_Queries_SQL.sql` one by one. These queries provide the final, aggregated data for the dashboard elements:
+        * Query 1: Total Spend & MoM Trend.
+        * Query 2: **Cost Allocation Rate** (KPI for the Data Strategist).
+        * Query 3: Top-Level Spend by Product/Cloud.
+        * Query 4: **Unit Economics (Cost per DAU)** (The C-suite insight).
+2.  **Create Conceptual Executive Dashboard:**
+    * **Tool:** Looker Studio (Conceptual)
+    * **Action:** Create a new report in Looker Studio and connect it to your `driiiportfolio` BigQuery project.
+    * **Deliverable:** Conceptualize the `04_FinOps_Executive_Dashboard.looker` by creating four main visuals, each powered by the corresponding SQL query from Step 1.
+
+| Dashboard Element | Query # | Visualization Type | Key Insight |
+| :--- | :--- | :--- | :--- |
+| **Allocation Rate & Trend** | 2 | Gauge/Time Series | Shows the progress toward the **$95\%$ accuracy** goal. |
+| **Total Spend & MoM** | 1 | Bar Chart/Trendline | Provides the overall financial health context. |
+| **Spend by Product** | 3 | Pie Chart/Table | Pinpoints the largest cost drivers (e.g., Aether, Nexus, UNKNOWN). |
+| **Cost per DAU (Unit Economics)** | 4 | Time Series | The critical metric linking cost to business value for pricing/scaling. |
+
+3.  **Final Project Review (GitHub):**
+    * **Action:** Ensure all documentation (`README.md`, `data_dictionary.csv`, `Cloud_Setup_Guide.docx`) and code files (`.ipynb`, `.sql`) are correctly committed to the `FinOps-Data-Strategy-FOCUS-Project` GitHub repository.
+
+---
+
+Would you like me to generate any further documentation, such as the full content for the `README.md` or a detailed analysis of the **Cost per DAU** results for a final executive summary?
