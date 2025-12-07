@@ -14,6 +14,7 @@ The project is grounded in current (as of December 2025) challenges in the FinOp
 | Forecast/Budgetary Uncertainty                           | Provide high-quality, normalized data to reduce forecast variance and eliminate "invoice shock."                             | Forecast vs. Actual Spend              |
 
 **Business Scenario: Stratosphere Tech**
+
 IBM Cloudability has a major client, **'Stratosphere Tech'**, a rapidly growing multi-cloud (AWS and GCP) SaaS provider whose executive leadership is demanding greater **financial accountability and predictability**.
 * **Current State Challenge:** The current cost allocation rate is dangerously low (≈62%) due to inconsistent tagging, leading to high forecast variance (over 15% MoM) and a lack of trust in the numbers.
 * **Business Problem Statement:** Stratosphere Tech lacks **trustworthy, unified, and business-aligned multi-cloud cost data**, preventing the calculation of the **Cost per Daily Active User (DAU)** for their flagship product, 'Aether', which is critical for strategic pricing and capacity decisions.
