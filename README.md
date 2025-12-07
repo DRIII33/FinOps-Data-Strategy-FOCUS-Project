@@ -19,7 +19,7 @@ IBM Cloudability has a major client, **'Stratosphere Tech'**, a rapidly growing 
 * **Current State Challenge:** The current cost allocation rate is dangerously low (≈62%) due to inconsistent tagging, leading to high forecast variance (over 15% MoM) and a lack of trust in the numbers.
 * **Business Problem Statement:** Stratosphere Tech lacks **trustworthy, unified, and business-aligned multi-cloud cost data**, preventing the calculation of the **Cost per Daily Active User (DAU)** for their flagship product, 'Aether', which is critical for strategic pricing and capacity decisions.
 * **Strategic Goal:** The Data Strategist will define the data foundation to achieve 95% **cost allocation accuracy** and produce the reliable **Unit Economics** metric required for executive decision-making.
-* 
+
 _________________________________________________________________________
 ## FinOps Data Strategy FOCUS Project: Multi-Cloud Cost Allocation
 
