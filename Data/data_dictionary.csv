@@ -1,0 +1,10 @@
+Column Name,Data Type,Source Table,Description
+line_item_id,STRING,raw_cloud_billing,Unique identifier for the cost line item.
+billing_date,DATE,raw_cloud_billing,The date the usage occurred (daily granularity).
+cloud_provider,STRING,raw_cloud_billing,Cloud Service Provider (AWS or GCP).
+service_name,STRING,raw_cloud_billing,"Specific service name (e.g., EC2, Compute Engine, S3)."
+tag_product,STRING (Tag/Label),raw_cloud_billing,Product tag/label (NULL indicates missing tag).
+tag_team,STRING (Tag/Label),raw_cloud_billing,Team owner tag/label (NULL indicates missing tag).
+amortized_cost_in_usd,NUMERIC,raw_cloud_billing,Final cost in USD after applying Savings Plan/RI benefits (The definitive cost to report).
+is_unallocated,BOOL (Data Quality Flag),raw_cloud_billing,Flag for poor data quality: TRUE if a critical tag is missing (initial issue is simulated).
+daily_active_users,INTEGER,business_dau_metrics,Business metric for Unit Economics.
