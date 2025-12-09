@@ -93,3 +93,13 @@ LEFT JOIN business_dau_metrics*
 This SQL transformation ensures that while the **raw data is messy**, the **reporting layer is clean and complete**, guaranteeing $100\%$ of costs can be attributed to a dimension (`Aether`, `Nexus`, or the designated problem category: `UNKNOWN`).
 
 ---
+
+**Portfolio Project Disclaimer**
+
+**Disclaimer FinOps Data Strategy Portfolio Project** 
+
+This portfolio project, titled **FOCUS-Aligned Multi-Cloud Data Strategy**, is a conceptual exercise designed to demonstrate proficiency in the core competencies required of a **Senior Data Strategist** at a firm like IBM Consulting, particularly within the FinOps domain.
+
+All data used in this project, including the raw billing records *(raw_multi_cloud_billing_data.csv)* and business metrics *(business_dau_metrics.csv)*, is **entirely synthetic, anonymized, and fictional**. The **challenges**—specifically the 62% allocation rate and the $506K unallocated cost liability—were derived from common, publicly discussed pain points and industry reports related to multi-cloud cost management and tagging governance (Frameworks like **FOCUS** are publicly available)
+
+The use of company names such as **IBM Cloudability, AWS**, and **GCP** is purely for **contextual realism and architectural simulation** and does not imply any actual or historical relationship, data, or endorsement. This project does not intend to misrepresent the financial or operational status of any company mentioned. Its sole purpose is to showcase the application of data strategy, BigQuery, and FinOps principles to solve real-world business problems.
