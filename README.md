@@ -35,8 +35,8 @@ The project's primary goal, designed by the Senior Data Strategist, was to estab
 
 ### Key Strategic Goals
 
-1.  **Normalization:** Fix the messy raw tagging data (which was $\approx 38\%$ incomplete) at the analytic layer using `COALESCE` logic, mapping missing tags to `'UNKNOWN'`. This ensures all costs are reported, preventing zero-dollar line items in the reporting.
-2.  **Allocation Measurement:** Implement a metric to measure the current **Cost Allocation Rate** (initially $\approx 62\%$) to track progress toward the target of $95\%$ accuracy.
+1.  **Normalization:** Fix the messy raw tagging data (which was approx 38% incomplete) at the analytic layer using `COALESCE` logic, mapping missing tags to `'UNKNOWN'`. This ensures all costs are reported, preventing zero-dollar line items in the reporting.
+2.  **Allocation Measurement:** Implement a metric to measure the current **Cost Allocation Rate** (initially approx 62%) to track progress toward the target of 95%$ accuracy.
 3.  **Unit Economics:** Integrate cloud cost data with business metrics (Daily Active Users - DAU) to calculate the strategic C-suite metric: **Cost per DAU**.
 
 ---
