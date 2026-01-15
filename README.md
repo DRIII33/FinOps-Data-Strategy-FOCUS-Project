@@ -90,7 +90,7 @@ FROM raw_cloud_billing
 LEFT JOIN business_dau_metrics*
 
 
-This SQL transformation ensures that while the **raw data is messy**, the **reporting layer is clean and complete**, guaranteeing $100\%$ of costs can be attributed to a dimension (`Aether`, `Nexus`, or the designated problem category: `UNKNOWN`).
+This SQL transformation ensures that while the **raw data is messy**, the **reporting layer is clean and complete**, guaranteeing 100% of costs can be attributed to a dimension (`Aether`, `Nexus`, or the designated problem category: `UNKNOWN`).
 
 ---
 
