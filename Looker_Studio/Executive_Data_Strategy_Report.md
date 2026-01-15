@@ -32,9 +32,11 @@ Prior to this project, the organization faced a critical challenge: a significan
 ### The Solution: The FINOPS_FOCUS_ANALYTICS View
 
 The **Senior Data Strategist** addressed this by implementing the **`FINOPS_FOCUS_ANALYTICS`** view in BigQuery. This view executed the following critical data governance logic:
+
 **
-'COALESCE (tag_product, 'UNKNOWN') AS allocated_product'
+    'COALESCE (tag_product, 'UNKNOWN') AS allocated_product'
 **
+
 This normalization ensures that:
 1.  **100% of cost is accounted for** (Chart 3's total bar height).
 2.  The approx 38% unallocated spend is cleanly mapped to a single, high-priority dimension: **'UNKNOWN'**, providing a single, clear target for cleanup. 
