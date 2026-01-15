@@ -1,8 +1,11 @@
---- Executive_Summary_Analysis.docx ---
+--- Executive_Summary_Analysis.md---
 
 ## IBM Cloudability FinOps Data Strategy Project: Executive Summary
 
 **Project Focus:** FOCUS-Aligned Multi-Cloud Data Strategy Implementation
+
+**Author:** Daniel Rodriguez III - Senior Data Strategist
+
 **Deliverable:** Normalized BigQuery Analytics View (`FINOPS_FOCUS_ANALYTICS`) and Unit Economics Report
 
 ### 1. Executive Summary & Strategic Insight
@@ -18,7 +21,7 @@ The implementation of the **FINOPS_FOCUS_ANALYTICS** view has successfully achie
 | **2025-08** | 80,918,978 | $53,705.71 | **$0.0007** |
 | **2025-09** | 83,580,507 | $57,275.22 | **$0.0007** |
 | **2025-10** | 91,558,851 | $64,459.50 | **$0.0007** |
-| **2025-11** | 96,840,020 | $62,137.28$| **$0.0006** |
+| **2025-11** | 96,840,020 | $62,137.28 | **$0.0006** |
 
 The slight elevation in August, September, and October to **$0.0007** (a change of approx 16%) correlates with a period of high, unoptimized usage of multi-cloud networking and compute services. This is the first time the business has been able to link a marginal cost increase directly to the Unit Economic outcome.
 
