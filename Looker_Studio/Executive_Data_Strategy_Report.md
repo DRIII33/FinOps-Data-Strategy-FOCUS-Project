@@ -1,8 +1,11 @@
 ## 📜 Executive Data Strategy Report: Achieving FinOps Accountability
 
 **TO:** Executive Leadership, Product VPs, and Finance Steering Committee
+
 **FROM:** Senior Data Strategist
+
 **DATE:** December 8, 2025
+
 **SUBJECT:** Performance Analysis of the New Multi-Cloud Data Model: **Cost/DAU Stability and the $506K Unallocated Cost Liability**
 
 ---
@@ -33,9 +36,10 @@ Prior to this project, the organization faced a critical challenge: a significan
 
 The **Senior Data Strategist** addressed this by implementing the **`FINOPS_FOCUS_ANALYTICS`** view in BigQuery. This view executed the following critical data governance logic:
 
-**
+
+
     'COALESCE (tag_product, 'UNKNOWN') AS allocated_product'
-**
+
 
 This normalization ensures that:
 1.  **100% of cost is accounted for** (Chart 3's total bar height).
