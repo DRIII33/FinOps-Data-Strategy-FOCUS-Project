@@ -2,7 +2,7 @@
 
 **TO:** Executive Leadership, Product VPs, and Finance Steering Committee
 
-**FROM:** Senior Data Strategist
+**FROM:** Daniel Rodriguez III - Senior Data Strategist
 
 **DATE:** December 8, 2025
 
@@ -38,7 +38,38 @@ The **Senior Data Strategist** addressed this by implementing the **`FINOPS_FOCU
 
 
 
-    'COALESCE (tag_product, 'UNKNOWN') AS allocated_product'
+    'SELECT
+    t1.line_item_id,
+    t1.billing_date,
+    t1.billing_period,
+    -- Normalization: Standardizing provider and service fields
+    t1.cloud_provider,
+    t1.service_name,
+
+    -- Data Quality Fix & Allocation Logic (Mapping raw tags to FOCUS-like dimensions)
+    -- COALESCE replaces NULL (the unallocated tag) with 'UNKNOWN' for consistent reporting.
+    COALESCE(t1.tag_product, 'UNKNOWN') AS allocated_product,
+    COALESCE(t1.tag_environment, 'UNKNOWN') AS allocated_environment,
+    COALESCE(t1.tag_team, 'UNKNOWN') AS allocated_team_owner,
+    t1.region,
+
+    -- Cost Metric
+    t1.amortized_cost_in_usd AS focus_amortized_cost_usd,
+    t1.is_commitment,
+
+    -- Data Quality Metric
+    t1.is_unallocated,
+
+    -- Join with Business Metrics for Unit Economics
+    t2.daily_active_users
+    FROM
+    driiiportfolio.finops_data.raw_cloud_billing t1
+    LEFT JOIN
+    driiiportfolio.finops_data.business_dau_metrics t2
+    ON t1.billing_date = t2.business_date
+    AND t1.tag_product = t2.product_name -- Join cost data only for the relevant product
+    WHERE
+    t1.amortized_cost_in_usd > 0'
 
 
 This normalization ensures that:
