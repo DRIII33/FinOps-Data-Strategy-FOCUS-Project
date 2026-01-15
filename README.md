@@ -1,6 +1,6 @@
-This portfolio project is designed to showcase the full range of skills required for a **Senior Data Strategist at IBM Cloudability**, specifically focusing on data architecture, normalization (via a **FOCUS-like schema**), and the creation of high-impact financial metrics like **Unit Economics** for the FinOps Executive Dashboard.
+### **Project: FOCUS-Aligned Multi-Cloud Data Strategy for Cloudability: Driving Unit Economics & Forecast Accuracy**
 
-**Project: FOCUS-Aligned Multi-Cloud Data Strategy for Cloudability: Driving Unit Economics & Forecast Accuracy**
+*This portfolio project is designed to showcase the full range of skills required for a **Senior Data Strategist at IBM Cloudability**, specifically focusing on data architecture, normalization (via a **FOCUS-like schema**), and the creation of high-impact financial metrics like **Unit Economics** for the FinOps Executive Dashboard.*
 
 **1. Research-Driven Business Scenario & Problem**
 The project is grounded in current (as of December 2025) challenges in the FinOps industry, as highlighted by FinOps Foundation reports and industry trends.
@@ -25,6 +25,8 @@ _________________________________________________________________________
 
 **Repository Name:** `FinOps-Data-Strategy-FOCUS-Project`
 
+**Author:** Daniel Rodriguez III - Senior Data Strategist
+
 ---
 
 ## Project Overview
@@ -47,50 +49,15 @@ The project deliverables are organized into the following clear directories:
 
 | Folder | Description | Key Files |
 | :--- | :--- | :--- |
-| **`/docs`** | All non-code instructional guides and final executive analyses. | `Cloud_Setup_Guide.docx`, `Executive_Summary_Analysis.docx` |
+| **`/docs`** | All non-code instructional guides and final executive analyses. | `Cloud_Setup_Guide.md`, `Executive_Summary_Analysis.md` |
 | **`/data`** | Synthetic data generated to simulate the real-world multi-cloud complexity. | `raw_multi_cloud_billing_data.csv`, `business_dau_metrics.csv` |
-| **`/notebooks`** | Python scripts used for initial data generation and simulation. | `01_Synthetic_Data_Generator.ipynb` |
+| **`/notebooks`** | Python scripts used for initial data generation and simulation. | `01_Synthetic_Data_Generator.py` |
 | **`/sql`** | BigQuery SQL scripts for data modeling and final reporting. | `02_BigQuery_Schema_SQL.sql`, `03_Dashboard_Queries_SQL.sql` |
-| **`/looker_studio`** | Conceptual dashboard artifact. | `04_FinOps_Executive_Dashboard.looker` |
+| **`/looker_studio`** | Conceptual dashboard artifact. | `04_FinOps_Executive_Dashboard.pdf` |
 | **Root** | Core documentation for the data structure. | `data_dictionary.csv` |
 
 ---
 
-## Execution Guide: Phase-by-Phase
-
-This project follows a strict three-phase rollout process.
-
-### Phase 1: Data Generation & Ingestion
-
-1.  **Generate Data:** Execute the Python script located in **`/notebooks/01_Synthetic_Data_Generator.ipynb`** to create the two raw CSV files in the `/data` directory.
-    * *Result:* Confirms the initial low allocation rate and the existence of the core data quality problem (missing tags).
-2.  **Upload Data:** Follow the detailed steps in **`/docs/Cloud_Setup_Guide.docx`** to upload these CSVs to the designated BigQuery tables (`raw_cloud_billing`, `business_dau_metrics`).
-
-### Phase 2: Data Modeling and Transformation
-
-1.  **Execute Schema:** Run the full script located in **`/sql/02_BigQuery_Schema_SQL.sql`** in BigQuery.
-    * *Result:* This creates the single, normalized, and consolidated analytic view: **`FINOPS_FOCUS_ANALYTICS`**. This view is the permanent, cleaned source of truth for all subsequent reporting.
-
-### Phase 3: Reporting and Insight
-
-1.  **Run Reporting Queries:** Execute the four queries within **`/sql/03_Dashboard_Queries_SQL.sql`**. These queries run against the **`FINOPS_FOCUS_ANALYTICS`** view to produce the final aggregated metrics (e.g., Cost per DAU, Allocation Rate KPI).
-2.  **Connect Dashboard:** Use the queries from Step 1 as **Custom Queries** within Looker Studio to create the visualizations for the FinOps Executive Dashboard.
-3.  **Analyze & Communicate:** Reference the **`/docs/Executive_Summary_Analysis.docx`** for the narrative and interpretation of the key findings (Cost/DAU stability, persistent allocation problem).
-
----
-
-## Key Data Strategy Component: The Analytic View
-
-The core intellectual property of this project is the **`FINOPS_FOCUS_ANALYTICS`** view. It addresses the $38\%$ unallocated cost problem by implementing the following BigQuery logic (simplified):
-
-*SELECT 
-  COALESCE(tag_product, 'UNKNOWN') AS allocated_product,
-  ...
-FROM raw_cloud_billing
-LEFT JOIN business_dau_metrics*
-
-
-This SQL transformation ensures that while the **raw data is messy**, the **reporting layer is clean and complete**, guaranteeing 100% of costs can be attributed to a dimension (`Aether`, `Nexus`, or the designated problem category: `UNKNOWN`).
 
 ---
 
